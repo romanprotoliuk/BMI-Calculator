@@ -1,27 +1,30 @@
 import './App.css';
 import { useState } from 'react';
 
-const NameField = ({ userDetails, handleChange }) => {
+const NameField = ({ userDetails, handleChange, handleShowHeight }) => {
 	return (
 			<>
-				<label htmlFor="name">Name</label>
+				<label id='label-name' htmlFor="name">Name</label>
 				<input
+					id='name-field'
 					required
 					type="text"
 					autoComplete='off'
 					value={userDetails.name}
 					name="name"
 					onChange={handleChange}
-				/>
+			/>
+				<button id='name-field-btn' onClick={handleShowHeight}>next</button>
 			</>
 	)
 }
 
-const HeightField = ({ userDetails, handleChange }) => {
+const HeightField = ({ userDetails, handleChange, handleShowWeight  }) => {
 	return (
 		<>
-				<label htmlFor="feet">Feet</label>
+				<label id='label-feet' htmlFor="feet">Feet</label>
 				<input
+					id='height-field'
 					required
 					type="text"
 					autoComplete='off'
@@ -30,8 +33,9 @@ const HeightField = ({ userDetails, handleChange }) => {
 					onChange={handleChange}
 				/>
 
-				<label htmlFor="inches">Inches</label>
-				<input
+				<label id='label-inches' htmlFor="inches">Inches</label>
+			<input
+					id='height-inches-field'
 					required
 					type="text"
 					autoComplete='off'
@@ -39,6 +43,7 @@ const HeightField = ({ userDetails, handleChange }) => {
 					name="inches"
 					onChange={handleChange}
 			/>
+			<button id='height-field-btn' onClick={handleShowWeight}>next</button>
 		</>
 	)
 }
@@ -46,8 +51,9 @@ const HeightField = ({ userDetails, handleChange }) => {
 const WeightField = ({ userDetails, handleChange }) => {
 	return (
 		<>
-				<label htmlFor="name">Weight</label>
-				<input
+				<label id='label-weight' htmlFor="name">Weight</label>
+			<input
+					id='weight-field'
 					required
 					type="text"
 					autoComplete='off'
@@ -70,11 +76,13 @@ const App = () => {
 	})
 	const [userPrompt, setUserPrompt] = useState('')
 	const [show, setShow] = useState(false)
+
+	const [showHeight, setShowHeight] = useState(false)
+	const [showWeight, setShowWeight] = useState(false)
 	// const [userAllInfo, setUserAllInfo] = useState('')
 
 	const { name, feet, inches, height, weight, bmi } = userDetails
 
-	
 	const handleChange = (e) => {
 		setUserDetails({
 			...userDetails,
@@ -83,6 +91,17 @@ const App = () => {
 		determineBMImessage(bmi)
 	}
 
+	const handleShowHeight = () => {
+		setShowHeight(true)
+		document.querySelector('#name-field').disabled = true
+		document.querySelector('#name-field-btn').disabled = true
+	}
+
+	const handleShowWeight = () => {
+		setShowWeight(true)
+		document.querySelector('#height-field').disabled = true
+		document.querySelector('#height-field-btn').disabled = true
+	}
 
 	const getKg = (pounds) => {
 		const killoValue = 0.45359237
@@ -137,6 +156,17 @@ const App = () => {
 		const bmiNumber = getBMI(Number(weight), Number(feet), Number(inches))
 		determineBMImessage(bmiNumber)
 		setShow(true)
+		document.querySelector('#name-field').style.display = 'none';
+		document.querySelector('#name-field-btn').style.display = 'none';
+		document.querySelector('#height-field').style.display = 'none';
+		document.querySelector('#height-inches-field').style.display = 'none';
+		document.querySelector('#height-field-btn').style.display = 'none';
+		document.querySelector('#weight-field').style.display = 'none';
+		document.querySelector('#submit-btn').style.display = 'none';
+		document.querySelector('#label-name').style.display = 'none'
+		document.querySelector('#label-feet').style.display = 'none'
+		document.querySelector('#label-inches').style.display = 'none'
+		document.querySelector('#label-weight').style.display = 'none'
 	}
 
 	const handleReset = () => {
@@ -161,19 +191,20 @@ const App = () => {
 			<form onSubmit={handleSubmit}>
 
 				<div>
-					<NameField userDetails={userDetails} handleChange={handleChange} />
+					<NameField userDetails={userDetails} handleChange={handleChange} handleShowHeight={handleShowHeight} />
 				</div>
 				<div>
-					<HeightField userDetails={userDetails} handleChange={handleChange} />
+					{showHeight ? <HeightField userDetails={userDetails} handleChange={handleChange} handleShowWeight={handleShowWeight}/> : "" }
+					
 				</div>
 				<div>
-					<WeightField userDetails={userDetails} handleChange={handleChange} />
+					{	showWeight ? <WeightField userDetails={userDetails} handleChange={handleChange} /> : ""}
 				</div>
 
-				<input type="submit" />
+				<input id='submit-btn' type="submit" />
 				{/* {conditional(bmi)} */}
 			</form>
-			<button onClick={handleReset}>Reset</button>
+			{/* <button onClick={handleReset}>Reset</button> */}
 			{show ? `hi ${name}, your bio metrics: height: ${feet}'${inches}, weight: ${weight}, your bmi ${bmi}, by our calculations: you are ${userPrompt}` : ''}
 		</div>);
 }
