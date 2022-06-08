@@ -1,29 +1,44 @@
-const HeightField = ({ userDetails, handleChange, handleShowWeight  }) => {
+import checkmark from '../../imgs/checkmark.svg'
+
+const HeightField = ({ userDetails, handleChange, handleShowWeight, secondNextBtn, secondCheckMark }) => {
 	return (
-		<>
-				<label id='label-feet' htmlFor="feet">Feet</label>
+		<div className="form-fields">
+			
+			<div className="name-wrapper">
 				<input
+					className="feet-input"
 					id='height-field'
 					required
 					type="text"
 					autoComplete='off'
-					value={userDetails.feet}
+					// value={userDetails.feet}
 					name="feet"
+					placeholder="Feet"
 					onChange={handleChange}
 				/>
+				{ secondCheckMark ? <div className='checkmark-img-div' style={{position: 'absolute'}}>
+					<img className='checkmark-img' src={checkmark} alt="checkark" />
+				</div> : ''}
+			</div>
 
-				<label id='label-inches' htmlFor="inches">Inches</label>
-			<input
+				<div className="inches-input name-wrapper">
+				<input
+					className="feet-input"
 					id='height-inches-field'
 					required
 					type="text"
 					autoComplete='off'
-					value={userDetails.inches}
+					// value={userDetails.inches}
 					name="inches"
+					placeholder="inches"
 					onChange={handleChange}
-			/>
-			<button id='height-field-btn' onClick={handleShowWeight}>next</button>
-		</>
+				/>	
+				{ secondCheckMark ? <div className='checkmark-img-div' style={{position: 'absolute'}}>
+					<img className='checkmark-img' src={checkmark} alt="checkark" />
+				</div> : ''}
+				</div>
+				{ secondNextBtn ? <button className="next-btn" id='height-field-btn' onClick={handleShowWeight}>next</button> : ''}
+		</div>
 	)
 }
 
