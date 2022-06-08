@@ -24,32 +24,59 @@
   margin-top: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 479px) {
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    color: #868686;
+    text-transform: uppercase;
+    margin: 4rem 0;
+    text-align: center;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .search-form {
+  
+    width: 35rem;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* background-color: #d3d3d3; */
+    /* border-radius: 0.5rem; */
+    margin-bottom: 5rem;
+    /* box-shadow: 1rem 2rem 5rem #aaa; */
+    position: relative;
   }
-  to {
-    transform: rotate(360deg);
+  .search-form input[type="text"] {
+    padding: 0 0.5rem;
+    width: 100%;
+    color: #555;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    -webkit-appearance: none;
+  }
+  .search-form input[type="submit"] {
+    width: 115px;
+    color: #333333;
+    -webkit-appearance: none;
+  }
+  .search-form input {
+    width: 300px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 15px 30px;
+    
+    border: 1px none #000;
+    border-radius: 30px;
+    background-color: #ecf0f3;
+    box-shadow: -14px -14px 30px 0 #fff, 14px 14px 30px 0 #d1d9e6;
+    font-family: Montserrat, sans-serif;
+    color: #646464;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 }
