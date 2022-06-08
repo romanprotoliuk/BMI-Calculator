@@ -21,12 +21,25 @@
 }
 
 .result-wrapper {
-  margin-top: 20px;
+  margin-top: 50px;
+}
+
+.img-icon {
+  width: 120px;
 }
 
 @media screen and (max-width: 479px) {
   .App {
     width: 100%;
+  }
+
+  .result-wrapper {
+    margin-top: 20px;
+  }
+
+  .text-display {
+    max-width: 200px;
+    margin: 0 auto;
   }
 
   h1 {
@@ -38,6 +51,10 @@
     text-align: center;
   }
   
+  .img-icon {
+    width: 90px;
+  }
+
   .search-form {
     margin: 0 auto;
     width: 90%;

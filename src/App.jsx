@@ -117,17 +117,17 @@ const App = () => {
 
 	const ResultRender = () => {
 		return (
-			<div className='result-wrapper' style={{marginTop: '50px'}}>
+			<div className='result-wrapper'>
 				<h2 style={{marginBottom: '20px'}}>Hi, {name}</h2>
 				<div>
-					<img className='img-icon' style={{width: '120px'}} src={avatar} alt={avatar} />
+					<img className='img-icon' src={avatar} alt={avatar} />
 				</div>
 				<h5 style={{marginTop: '20px', marginBottom: '10px'}}>your bio metrics:</h5>
 				<h3>height: {feet}'{inches}</h3>
 				<h3>weight: {weight}</h3>
 				<h3>your bmi: {bmi}</h3>
 				<h5 style={{marginTop: '30px', marginBottom: '10px'}}>by our calculations:</h5>
-				<h3>you are {userPrompt} </h3>
+				<h3 className='text-display'>you are {userPrompt} </h3>
 			</div>
 
 		)
