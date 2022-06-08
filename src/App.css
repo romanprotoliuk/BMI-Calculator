@@ -25,6 +25,10 @@
 }
 
 @media screen and (max-width: 479px) {
+  .App {
+    width: 100%;
+  }
+
   h1 {
     font-size: 2rem;
     letter-spacing: 0.1rem;
@@ -35,10 +39,12 @@
   }
   
   .search-form {
-  
-    width: 35rem;
-    height: 8rem;
-    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 50px;
+    /* width: 35rem; */
+    /* height: 8rem; */
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     
@@ -50,7 +56,7 @@
   }
   .search-form input[type="text"] {
     padding: 0 0.5rem;
-    width: 100%;
+    /* width: 100%; */
     color: #555;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -63,7 +69,7 @@
     -webkit-appearance: none;
   }
   .search-form input {
-    width: 300px;
+    width: 400px;
     margin-right: 10px;
     margin-left: 10px;
     padding: 15px 30px;
@@ -78,5 +84,9 @@
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
+  }
+
+  .result-wrapper {
+    padding-bottom: 30px;
   }
 }
